@@ -15,6 +15,8 @@ class TodoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){
+      }, child: Icon(Icons.add),),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.blue,
@@ -182,5 +184,7 @@ class TodoScreen extends StatelessWidget {
       )),
     );
   }
+
+
 }
 
