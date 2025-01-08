@@ -9,8 +9,8 @@ class TodoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),
-      subtitle: Text(description),
+      title: Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),),
+      subtitle: Text(description, overflow: TextOverflow.ellipsis,),
     );
   }
 }

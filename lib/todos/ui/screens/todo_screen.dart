@@ -206,33 +206,37 @@ class TodoScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: LongPressDraggable<Todo>(
-                  data: todo,
-                  feedback: Material(
-                    elevation: 4.0,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          todo.title,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                child: Card(
+                  elevation: 4.0, // Adds a slight shadow
+                  margin: const EdgeInsets.symmetric(vertical: 8.0), // Adds space between cards
+                  child: LongPressDraggable<Todo>(
+                    data: todo,
+                    feedback: Material(
+                      elevation: 4.0,
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            todo.title,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  childWhenDragging: Opacity(
-                    opacity: 0.5,
+                    childWhenDragging: Opacity(
+                      opacity: 0.5,
+                      child: TodoList(
+                        title: todo.title,
+                        description: todo.description,
+                      ),
+                    ),
                     child: TodoList(
                       title: todo.title,
                       description: todo.description,
                     ),
-                  ),
-                  child: TodoList(
-                    title: todo.title,
-                    description: todo.description,
                   ),
                 ),
               );
