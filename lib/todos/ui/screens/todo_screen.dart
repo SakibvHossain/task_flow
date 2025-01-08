@@ -40,7 +40,7 @@ class TodoScreen extends StatelessWidget {
             ],
           ),
           _buildChips(),
-          _buildDraggableLists(),
+          _buildDraggableList(),
         ],
       ),
     );
@@ -173,7 +173,7 @@ class TodoScreen extends StatelessWidget {
             itemCount: controller.filteredTodos.length,
             itemBuilder: (context, index) {
               final todo = controller.filteredTodos[index];
-              return GestureDetector(
+              return GestureDetector( //I Have to learn about animated container
                 onTap: () {
                   // Navigate to the details screen with a fade transition
                   Navigator.push(
@@ -205,6 +205,60 @@ class TodoScreen extends StatelessWidget {
                       },
                     ),
                   );
+                },
+                child: Card(
+                  elevation: 4.0, // Adds a slight shadow
+                  margin: const EdgeInsets.symmetric(vertical: 8.0), // Adds space between cards
+                  child: LongPressDraggable<Todo>(
+                    data: todo,
+                    feedback: Material(
+                      elevation: 4.0,
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            todo.title,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    childWhenDragging: Opacity(
+                      opacity: 0.5,
+                      child: TodoList(
+                        title: todo.title,
+                        description: todo.description,
+                      ),
+                    ),
+                    child: TodoList(
+                      title: todo.title,
+                      description: todo.description,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDraggableList() {
+    return Expanded(
+      child: Obx(
+            () => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemCount: controller.filteredTodos.length,
+            itemBuilder: (context, index) {
+              final todo = controller.filteredTodos[index];
+              return GestureDetector( //I Have to learn about animated container
+                onTap: () {
+                  controller.isExpanded.value = !controller.isExpanded.value;
                 },
                 child: Card(
                   elevation: 4.0, // Adds a slight shadow

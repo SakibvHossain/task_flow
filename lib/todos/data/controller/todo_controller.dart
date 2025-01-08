@@ -8,6 +8,8 @@ class TodoController extends GetxController {
   var todos = <Todo>[].obs;
   var selectedCategory = Rxn<Category>();
 
+  var isExpanded = false.obs;
+
   void updateTodoCategory(Todo todo, Category category) {
     todo.category = category;
     todos.refresh();
