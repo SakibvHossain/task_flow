@@ -1,1 +1,1 @@
-enum Category { important, notImportant, urgent, notUrgent }
+enum Category { Do, Schedule, Delegate, Delete }
