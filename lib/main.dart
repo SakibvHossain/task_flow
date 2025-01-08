@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testing/app.dart';
-import 'package:testing/todos/data/model/todo.dart';
-import 'package:testing/todos/ui/widgets/todo_list.dart';
 
-import 'core/enum/category.dart';
 
 void main() => runApp(TodoApp());
 

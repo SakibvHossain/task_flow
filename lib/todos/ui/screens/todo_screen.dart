@@ -157,7 +157,7 @@ class TodoScreen extends StatelessWidget {
                       },
                     ),
                   );
-                }).toList(),
+                }),
               ],
             ),
           )),

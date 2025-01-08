@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-import 'package:get/get.dart';
 import '../../../core/enum/category.dart';
 import '../../data/model/todo.dart';
 
