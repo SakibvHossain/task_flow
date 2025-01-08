@@ -27,7 +27,7 @@ class TodoScreen extends StatelessWidget {
         backgroundColor: Colors.blue,
         title: const Text(
           textAlign: TextAlign.center,
-          'Todo App',
+          'Task App',
           style: TextStyle(color: Colors.white),
         ),
       ),

@@ -9,8 +9,16 @@ class TodoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),),
-      subtitle: Text(description, overflow: TextOverflow.ellipsis,),
+      title: Text(
+        title,
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+      ),
+      subtitle: Text(
+        description.split('\n').first, // This is called text sanitization or line truncation
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1, // Limit to a single line
+        style: const TextStyle(fontSize: 14),
+      ),
     );
   }
 }
