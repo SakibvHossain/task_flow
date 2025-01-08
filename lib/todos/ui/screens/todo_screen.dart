@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/enum/category.dart';
 import '../../data/controller/todo_controller.dart';
 import '../../data/model/todo.dart';
@@ -24,11 +23,13 @@ class TodoScreen extends StatelessWidget {
       ),
       appBar: AppBar(
         centerTitle: true,
+        leading: SizedBox(),
         backgroundColor: Colors.blue,
-        title: const Text(
+        title: Text(
           textAlign: TextAlign.center,
-          'Eisenhower MATRIX',
-          style: TextStyle(color: Colors.white),
+          'Eisenhower Matrix',
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.w600, fontSize: 22),
         ),
       ),
       body: Column(
@@ -63,16 +64,16 @@ class TodoScreen extends StatelessWidget {
                     builder: (context, candidateData, rejectedData) {
                       return Obx(() => Card(
                             margin: const EdgeInsets.all(8),
-                            color: Colors.blue,
+                            color: Colors.blue.withOpacity(.8),
                             child: SizedBox(
                               height: 100,
                               child: Center(
                                 child: Text(
                                   "${controller.capitalize(category.toString().split('.').last)}\n(${controller.todos.where((todo) => todo.category == category).length})",
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 14,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -113,7 +114,7 @@ class TodoScreen extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 14,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -173,7 +174,8 @@ class TodoScreen extends StatelessWidget {
             itemCount: controller.filteredTodos.length,
             itemBuilder: (context, index) {
               final todo = controller.filteredTodos[index];
-              return GestureDetector( //I Have to learn about animated container
+              return GestureDetector(
+                //I Have to learn about animated container
                 onTap: () {
                   // Navigate to the details screen with a fade transition
                   Navigator.push(
@@ -208,7 +210,8 @@ class TodoScreen extends StatelessWidget {
                 },
                 child: Card(
                   elevation: 4.0, // Adds a slight shadow
-                  margin: const EdgeInsets.symmetric(vertical: 8.0), // Adds space between cards
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 8.0), // Adds space between cards
                   child: LongPressDraggable<Todo>(
                     data: todo,
                     feedback: Material(
@@ -250,19 +253,21 @@ class TodoScreen extends StatelessWidget {
   Widget _buildDraggableList() {
     return Expanded(
       child: Obx(
-            () => Padding(
+        () => Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
             itemCount: controller.filteredTodos.length,
             itemBuilder: (context, index) {
               final todo = controller.filteredTodos[index];
-              return GestureDetector( //I Have to learn about animated container
+              return GestureDetector(
+                //I Have to learn about animated container
                 onTap: () {
                   controller.isExpanded.value = !controller.isExpanded.value;
                 },
                 child: Card(
                   elevation: 4.0, // Adds a slight shadow
-                  margin: const EdgeInsets.symmetric(vertical: 8.0), // Adds space between cards
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 8.0), // Adds space between cards
                   child: LongPressDraggable<Todo>(
                     data: todo,
                     feedback: Material(

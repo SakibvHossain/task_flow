@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:testing/app.dart';
+import 'package:get/get.dart';
+import 'package:testing/todos/ui/screens/splash_screen.dart';
 
 
 void main() => runApp(TodoApp());
@@ -9,9 +10,9 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyApp(),
+      home: SplashScreen(),
     );
   }
 }
